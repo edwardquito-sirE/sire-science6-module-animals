@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertebrates vs. Invertebrates - Science Grade 6</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap');
+
+        :root {
+            --primary-green: #2e8b57;
+            --light-green: #e8f5e9;
+            --primary-blue: #1565c0;
+            --light-blue: #e3f2fd;
+            --accent-orange: #ff9800;
+            --accent-yellow: #ffeb3b;
+            --text-dark: #333;
+            --card-bg: #fff;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f4f9f4;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            color: var(--primary-green);
+            text-align: center;
+            font-size: 2.2rem;
+            margin-top: 2rem;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            background-color: var(--accent-orange);
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 30px;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--primary-green);
+        }
+
+        .flex-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .flex-half {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .emoji-large {
+            font-size: 8rem;
+            text-align: center;
+            display: block;
+        }
+
+        .grid-5 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .animal-card {
+            background: #fafafa;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .animal-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-green);
+        }
+
+        .animal-card .emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .animal-card h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--primary-blue);
+        }
+
+        .animal-card p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .comparison-table th {
+            background: var(--primary-green);
+            color: white;
+            padding: 1rem;
+            font-size: 1.2rem;
+            width: 50%;
+        }
+
+        .comparison-table th:last-child {
+            background: #6a1b9a; /* Purple for invertebrates like in the slide */
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+
+        .comparison-table td ul {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+
+        /* Quiz Styles */
+        .quiz-section {
+            background-color: var(--light-blue);
+            border-color: var(--primary-blue);
+        }
+
+        .quiz-section h2 {
+            color: var(--primary-blue);
+        }
+
+        .question-block {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .question-text {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .options label {
+            display: block;
+            padding: 0.5rem;
+            background: #f5f5f5;
+            margin-bottom: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .options label:hover {
+            background: #e0e0e0;
+        }
+
+        select {
+            padding: 0.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .btn {
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            display: block;
+            margin: 2rem auto;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            background: #f57c00;
+        }
+
+        #quiz-results {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 2rem;
+            margin-top: 1rem;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .word-bank {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #fff3e0;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .ident-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .ident-item {
+            text-align: center;
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .ident-item .emoji {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .correct { background-color: #c8e6c9 !important; border: 1px solid #4caf50; }
+        .incorrect { background-color: #ffcdd2 !important; border: 1px solid #f44336; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <p>Science • Grade 6</p>
+        <h1>Vertebrates <br> <span style="font-size: 1.5rem; color: var(--accent-yellow);">✨ vs. ✨</span> <br> Invertebrates</h1>
+        <div class="subtitle">What's the Difference?</div>
+    </header>
+
+    <div class="container">
+        <!-- What's Inside Today -->
+        <div class="card" style="background-color: #fffde7; border-top-color: var(--accent-yellow);">
+            <h2>💡 What's Inside Today?</h2>
+            <ul style="font-size: 1.2rem; line-height: 2;">
+                <li>✅ What are vertebrates?</li>
+                <li>✅ Kinds of vertebrates</li>
+                <li>✅ What are invertebrates?</li>
+                <li>✅ Examples of invertebrates</li>
+                <li>✅ Vertebrates vs. Invertebrates</li>
+                <li>📝 Assessment (15 items)</li>
+            </ul>
+        </div>
+
+        <!-- What is a Vertebrate -->
+        <div class="card flex-row">
+            <div class="flex-half">
+                <h2>What is a Vertebrate?</h2>
+                <p style="font-size: 1.2rem;">A <strong>vertebrate</strong> is an animal that has a <strong style="color: var(--primary-green);">backbone</strong> (spinal column) made of bone or cartilage.</p>
+                <p style="font-size: 1.2rem;">The backbone protects the spinal cord and helps the animal move.</p>
+            </div>
+            <div class="flex-half">
+                <span class="emoji-large">🐕🦴</span>
+            </div>
+        </div>
+
+        <!-- What is an Invertebrate -->
+        <div class="card flex-row" style="border-top-color: #6a1b9a;">
+            <div class="flex-half">
+                <span class="emoji-large">🐌</span>
+            </div>
+            <div class="flex-half">
+                <h2 style="color: #6a1b9a;">What is an Invertebrate?</h2>
+                <p style="font-size: 1.2rem;">An <strong>invertebrate</strong> is an animal that does <strong style="color: #d32f2f;">NOT</strong> have a backbone.</p>
+                <p style="font-size: 1.2rem;">Invertebrates come in many shapes and sizes. Most animals on Earth are invertebrates!</p>
+            </div>
+        </div>
+
+        <!-- 5 Kinds of Vertebrates -->
+        <div class="card">
+            <h2>The 5 Kinds of Vertebrates</h2>
+            <div class="grid-5">
+                <div class="animal-card" style="border-top: 4px solid #ff5722;">
+                    <h3>Mammals</h3>
+                    <div class="emoji">🐃</div>
+                    <p>Have hair or fur. Feed their babies milk.</p>
+                    <p><strong>Example:</strong> Carabao</p>
+                </div>
+                <div class="animal-card" style="border-top: 4px solid #03a9f4;">
+                    <h3>Birds</h3>
+                    <div class="emoji">🦅</div>
+                    <p>Have feathers, wings and lay eggs.</p>
+                    <p><strong>Example:</strong> Eagle</p>
+                </div>
+                <div class="animal-card" style="border-top: 4px solid #4caf50;">
+                    <h3>Reptiles</h3>
+                    <div class="emoji">🦎</div>
+                    <p>Have dry, scaly skin.</p>
+                    <p><strong>Example:</strong> Bayawak</p>
+                </div>
+                <div class="animal-card" style="border-top: 4px solid #9c27b0;">
+                    <h3>Amphibians</h3>
+                    <div class="emoji">🐸</div>
+                    <p>Live on land and in water.</p>
+                    <p><strong>Example:</strong> Palaka (Frog)</p>
+                </div>
+                <div class="animal-card" style="border-top: 4px solid #2196f3;">
+                    <h3>Fish</h3>
+                    <div class="emoji">🐟</div>
+                    <p>Live in water. Have fins and gills.</p>
+                    <p><strong>Example:</strong> Tilapia</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Examples of Invertebrates -->
+        <div class="card" style="border-top-color: #6a1b9a;">
+            <h2 style="color: #6a1b9a;">Examples of Invertebrates</h2>
+            <div class="grid-5">
+                <div class="animal-card">
+                    <div class="emoji">🦋</div>
+                    <p><strong>Butterfly</strong></p>
+                </div>
+                <div class="animal-card">
+                    <div class="emoji">🪱</div>
+                    <p><strong>Earthworm</strong></p>
+                </div>
+                <div class="animal-card">
+                    <div class="emoji">🐜</div>
+                    <p><strong>Ant</strong></p>
+                </div>
+                <div class="animal-card">
+                    <div class="emoji">🐌</div>
+                    <p><strong>Snail</strong></p>
+                </div>
+                <div class="animal-card">
+                    <div class="emoji">🦀</div>
+                    <p><strong>Crab</strong></p>
+                </div>
+                <div class="animal-card">
+                    <div class="emoji">🪼</div>
+                    <p><strong>Jellyfish</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="card">
+            <h2>Vertebrates vs. Invertebrates</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Vertebrates</th>
+                        <th>Invertebrates</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul>
+                                <li>Have a backbone</li>
+                                <li>Made of bone</li>
+                                <li>Usually larger</li>
+                                <li><strong>Examples:</strong> dog, eagle, frog, tilapia</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                <li>No backbone</li>
+                                <li>No bones</li>
+                                <li>Many small, some tiny</li>
+                                <li><strong>Examples:</strong> butterfly, snail, ant, crab</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- INTERACTIVE ASSESSMENT -->
+        <div class="card quiz-section" id="assessment">
+            <h2>⭐ ASSESSMENT ⭐</h2>
+            <p style="text-align: center; font-style: italic;">Good luck, future scientists! Complete all 15 items to test your knowledge.</p>
+
+            <!-- PART 1: CLASSIFICATION -->
+            <h3 style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border-radius: 5px;">ITEMS 1–5: CLASSIFICATION</h3>
+            <p><strong>Directions:</strong> Select <strong>V</strong> if the animal is a vertebrate. Select <strong>I</strong> if it is an invertebrate.</p>
+            
+            <div class="grid-5" id="part1">
+                <div class="question-block">
+                    <div class="emoji" style="font-size: 2rem; text-align: center;">🦋</div>
+                    <div class="question-text">1. Butterfly</div>
+                    <select id="q1">
+                        <option value="">Choose...</option>
+                        <option value="V">V - Vertebrate</option>
+                        <option value="I">I - Invertebrate</option>
+                    </select>
+                </div>
+                <div class="question-block">
+                    <div class="emoji" style="font-size: 2rem; text-align: center;">🐟</div>
+                    <div class="question-text">2. Tilapia</div>
+                    <select id="q2">
+                        <option value="">Choose...</option>
+                        <option value="V">V - Vertebrate</option>
+                        <option value="I">I - Invertebrate</option>
+                    </select>
+                </div>
+                <div class="question-block">
+                    <div class="emoji" style="font-size: 2rem; text-align: center;">🐌</div>
+                    <div class="question-text">3. Snail</div>
+                    <select id="q3">
+                        <option value="">Choose...</option>
+                        <option value="V">V - Vertebrate</option>
+                        <option value="I">I - Invertebrate</option>
+                    </select>
+                </div>
+                <div class="question-block">
+                    <div class="emoji" style="font-size: 2rem; text-align: center;">🦅</div>
+                    <div class="question-text">4. Eagle</div>
+                    <select id="q4">
+                        <option value="">Choose...</option>
+                        <option value="V">V - Vertebrate</option>
+                        <option value="I">I - Invertebrate</option>
+                    </select>
+                </div>
+                <div class="question-block">
+                    <div class="emoji" style="font-size: 2rem; text-align: center;">🐜</div>
+                    <div class="question-text">5. Ant</div>
+                    <select id="q5">
+                        <option value="">Choose...</option>
+                        <option value="V">V - Vertebrate</option>
+                        <option value="I">I - Invertebrate</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- PART 2: IDENTIFICATION -->
+            <h3 style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border-radius: 5px; margin-top: 2rem;">ITEMS 6–10: IDENTIFICATION</h3>
+            <p><strong>Directions:</strong> Select the correct name of the animal shown in the picture.</p>
+            <div class="word-bank">
+                <span>Carabao</span> • <span>Bayawak</span> • <span>Palaka</span> • <span>Crab</span> • <span>Earthworm</span>
+            </div>
+
+            <div class="ident-grid" id="part2">
+                <div class="ident-item">
+                    <div class="emoji">🐃</div>
+                    <div class="question-text">6.</div>
+                    <select id="q6" style="width: 100%;">
+                        <option value="">Select...</option>
+                        <option value="Carabao">Carabao</option>
+                        <option value="Bayawak">Bayawak</option>
+                        <option value="Palaka">Palaka</option>
+                        <option value="Crab">Crab</option>
+                        <option value="Earthworm">Earthworm</option>
+                    </select>
+                </div>
+                <div class="ident-item">
+                    <div class="emoji">🦎</div>
+                    <div class="question-text">7.</div>
+                    <select id="q7" style="width: 100%;">
+                        <option value="">Select...</option>
+                        <option value="Carabao">Carabao</option>
+                        <option value="Bayawak">Bayawak</option>
+                        <option value="Palaka">Palaka</option>
+                        <option value="Crab">Crab</option>
+                        <option value="Earthworm">Earthworm</option>
+                    </select>
+                </div>
+                <div class="ident-item">
+                    <div class="emoji">🐸</div>
+                    <div class="question-text">8.</div>
+                    <select id="q8" style="width: 100%;">
+                        <option value="">Select...</option>
+                        <option value="Carabao">Carabao</option>
+                        <option value="Bayawak">Bayawak</option>
+                        <option value="Palaka">Palaka</option>
+                        <option value="Crab">Crab</option>
+                        <option value="Earthworm">Earthworm</option>
+                    </select>
+                </div>
+                <div class="ident-item">
+                    <div class="emoji">🦀</div>
+                    <div class="question-text">9.</div>
+                    <select id="q9" style="width: 100%;">
+                        <option value="">Select...</option>
+                        <option value="Carabao">Carabao</option>
+                        <option value="Bayawak">Bayawak</option>
+                        <option value="Palaka">Palaka</option>
+                        <option value="Crab">Crab</option>
+                        <option value="Earthworm">Earthworm</option>
+                    </select>
+                </div>
+                <div class="ident-item">
+                    <div class="emoji">🪱</div>
+                    <div class="question-text">10.</div>
+                    <select id="q10" style="width: 100%;">
+                        <option value="">Select...</option>
+                        <option value="Carabao">Carabao</option>
+                        <option value="Bayawak">Bayawak</option>
+                        <option value="Palaka">Palaka</option>
+                        <option value="Crab">Crab</option>
+                        <option value="Earthworm">Earthworm</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- PART 3: MULTIPLE CHOICE -->
+            <h3 style="background: var(--primary-blue); color: white; padding: 0.5rem 1rem; border-radius: 5px; margin-top: 2rem;">ITEMS 11–15: MULTIPLE CHOICE</h3>
+            <p><strong>Directions:</strong> Choose the correct answer for each question.</p>
+
+            <div id="part3">
+                <div class="question-block">
+                    <div class="question-text">11. Which animal is a mammal?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="A"> A. Eagle</label>
+                        <label><input type="radio" name="q11" value="B"> B. Carabao</label>
+                        <label><input type="radio" name="q11" value="C"> C. Tilapia</label>
+                        <label><input type="radio" name="q11" value="D"> D. Butterfly</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <div class="question-text">12. Which animal has scales and is a reptile?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="A"> A. Palaka</label>
+                        <label><input type="radio" name="q12" value="B"> B. Bayawak</label>
+                        <label><input type="radio" name="q12" value="C"> C. Crab</label>
+                        <label><input type="radio" name="q12" value="D"> D. Snail</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <div class="question-text">13. Which animal lives in water and breathes using gills?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="A"> A. Frog</label>
+                        <label><input type="radio" name="q13" value="B"> B. Tilapia</label>
+                        <label><input type="radio" name="q13" value="C"> C. Eagle</label>
+                        <label><input type="radio" name="q13" value="D"> D. Ant</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <div class="question-text">14. Which of the following is an invertebrate?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="A"> A. Dog</label>
+                        <label><input type="radio" name="q14" value="B"> B. Eagle</label>
+                        <label><input type="radio" name="q14" value="C"> C. Crab</label>
+                        <label><input type="radio" name="q14" value="D"> D. Tilapia</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <div class="question-text">15. Which of these animals does NOT have a backbone?</div>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="A"> A. Frog</label>
+                        <label><input type="radio" name="q15" value="B"> B. Snail</label>
+                        <label><input type="radio" name="q15" value="C"> C. Carabao</label>
+                        <label><input type="radio" name="q15" value="D"> D. Bayawak</label>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn" onclick="checkAnswers()">Check My Answers!</button>
+
+            <div id="quiz-results"></div>
+        </div>
+
+        <!-- Great Work Footer -->
+        <div class="card" style="text-align: center; background-color: var(--light-green);">
+            <h2 style="font-size: 2.5rem; margin-bottom: 0.5rem;">🌟 Great Work! 🌟</h2>
+            <p style="font-size: 1.3rem;">Now you know the difference between vertebrates and invertebrates!</p>
+            <p style="font-size: 1.2rem; font-weight: bold; color: var(--primary-green);">Keep exploring and stay curious!</p>
+        </div>
+
+    </div>
+
+    <script>
+        const answers = {
+            q1: "I", q2: "V", q3: "I", q4: "V", q5: "I",
+            q6: "Carabao", q7: "Bayawak", q8: "Palaka", q9: "Crab", q10: "Earthworm",
+            q11: "B", q12: "B", q13: "B", q14: "C", q15: "B"
+        };
+
+        function checkAnswers() {
+            let score = 0;
+            const total = 15;
+
+            // Check 1-10 (Select dropdowns)
+            for (let i = 1; i <= 10; i++) {
+                const el = document.getElementById('q' + i);
+                const val = el.value;
+                el.classList.remove('correct', 'incorrect');
+                
+                if (val === answers['q' + i]) {
+                    score++;
+                    el.classList.add('correct');
+                } else if (val !== "") {
+                    el.classList.add('incorrect');
+                }
+            }
+
+            // Check 11-15 (Radio buttons)
+            for (let i = 11; i <= 15; i++) {
+                const radios = document.getElementsByName('q' + i);
+                let selected = null;
+                const container = radios[0].closest('.question-block');
+                container.classList.remove('correct', 'incorrect');
+
+                for (const radio of radios) {
+                    if (radio.checked) {
+                        selected = radio.value;
+                        break;
+                    }
+                }
+
+                if (selected === answers['q' + i]) {
+                    score++;
+                    container.classList.add('correct');
+                } else if (selected !== null) {
+                    container.classList.add('incorrect');
+                }
+            }
+
+            // Show results
+            const resultsDiv = document.getElementById('quiz-results');
+            resultsDiv.style.display = 'block';
+            
+            if (score === total) {
+                resultsDiv.style.backgroundColor = '#c8e6c9';
+                resultsDiv.style.color = '#2e7d32';
+                resultsDiv.innerHTML = `Perfect Score! 🎉 You got ${score} out of ${total} correct!`;
+            } else if (score >= 10) {
+                resultsDiv.style.backgroundColor = '#fff9c4';
+                resultsDiv.style.color = '#f57f17';
+                resultsDiv.innerHTML = `Great Job! 👍 You got ${score} out of ${total} correct. Check the red boxes to see where you made mistakes.`;
+            } else {
+                resultsDiv.style.backgroundColor = '#ffcdd2';
+                resultsDiv.style.color = '#c62828';
+                resultsDiv.innerHTML = `Keep Trying! 💪 You got ${score} out of ${total}. Review the lesson and try again!`;
+            }
+        }
+    </script>
+</body>
+</html>
